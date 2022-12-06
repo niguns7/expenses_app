@@ -1,13 +1,13 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
 
 class Newtransaction extends StatelessWidget {
-
+  final Function addTx;
   final titleController= TextEditingController();
   final AmountController= TextEditingController();
+
+  Newtransaction(this.addTx);
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -26,7 +26,9 @@ class Newtransaction extends StatelessWidget {
               //onChanged: ((value) => AmountInupt=value),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                addTx(titleController.text, double.parse(AmountController.text) );
+              },
               style: TextButton.styleFrom(
                 foregroundColor: Colors.purple, // Text Color
               ),
