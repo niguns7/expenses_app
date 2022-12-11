@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
-class Newtransaction extends StatelessWidget {
+class Newtransaction extends StatefulWidget {
   final Function addTx;
-  final titleController = TextEditingController();
-  final AmountController = TextEditingController();
- 
+
   Newtransaction(this.addTx);
+
+  @override
+  State<Newtransaction> createState() => _NewtransactionState();
+}
+
+class _NewtransactionState extends State<Newtransaction> {
+  final titleController = TextEditingController();
+
+  final AmountController = TextEditingController();
 
   void submitData() {
     final enteredData = titleController.text;
@@ -14,10 +21,14 @@ class Newtransaction extends StatelessWidget {
     if (enteredData.isEmpty || enteredAmount <= 0) {
       return; //return also stops the function execution
     }
-    addTx(
+    widget.addTx(
       enteredData,
       enteredAmount,
-    ); //submitting the transactiion when button is presed
+
+
+    );
+          Navigator.of(context).pop(); //pop down for bottom box .... context is auto defined by class
+          //submitting the transactiion when button is presed
   }
 
   @override
