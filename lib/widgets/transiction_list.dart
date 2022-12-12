@@ -10,7 +10,9 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 530,
-        child: ListView.builder(
+        child: transaction.isEmpty ? Column(children: <Widget>[
+          Image.asset('assets/images/image.png')
+        ],): ListView.builder(
           itemBuilder: (context, index) {
                         return Card(
               child: Row(
@@ -34,7 +36,7 @@ class TransactionList extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         transaction[index].title,
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: Theme.of(context).textTheme.headline6,
                       ),
                       Text(
                         DateFormat.yMMMd().format(transaction[index].date),
