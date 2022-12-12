@@ -25,27 +25,29 @@ class Chart extends StatelessWidget {
         print(totalSum);
       }
       return {
-        'day': DateFormat.E().format(Weekday).substring(0,1),
+        'day': DateFormat.E().format(Weekday).substring(0, 1),
         'amount': totalSum,
-        };
+      };
     });
   }
 
-   double get totalSpending{
+  double get totalSpending {
     return groupedTransactiionValues.fold(0.0, (sum, items) {
-      return sum+items['amount'];
+      return sum + items['amount'];
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Card(
-        elevation: 6,
-        margin: EdgeInsets.all(20),
-        child: Row(
-          children: groupedTransactiionValues.map((data) {
-            return ChartBar(data['day'], data['amount'], (data['amount'] as double)/ totalSpending);
-          }).toList(),
-        ),);
+      elevation: 6,
+      margin: EdgeInsets.all(25),
+      child: Row(
+        children: groupedTransactiionValues.map((data) {
+          return ChartBar(data['day'], data['amount'],
+              totalSpending == 0.0 ? 0.0 :(data['amount'] as double) / totalSpending);
+        }).toList(),
+      ),
+    );
   }
 }
