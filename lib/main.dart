@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Expenses App',
       theme: ThemeData(
-        primarySwatch: Colors.purple //sets defult color
+        primarySwatch: Colors.purple, //sets defult color
+        fontFamily: 'QuickSand',
       ),
       home: MyHomePage(),
     );
