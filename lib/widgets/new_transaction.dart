@@ -14,7 +14,7 @@ class _NewtransactionState extends State<Newtransaction> {
 
   final AmountController = TextEditingController();
 
-  void submitData() {
+  void _submitData() {
     final enteredData = titleController.text;
     final enteredAmount = double.parse(AmountController.text);
 
@@ -30,6 +30,10 @@ class _NewtransactionState extends State<Newtransaction> {
     //submitting the transactiion when button is presed
   }
 
+  void _presentDatePicker () {
+    showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2019), lastDate: DateTime.now());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -42,12 +46,12 @@ class _NewtransactionState extends State<Newtransaction> {
               decoration: InputDecoration(labelText: 'Enter title'),
               controller: titleController,
               onSubmitted: ((value) =>
-                  submitData), //type of value on submitdata is string
+                  _submitData), //type of value on submitdata is string
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Enter amount'),
               controller: AmountController,
-              onSubmitted: ((value) => submitData()),
+              onSubmitted: ((value) => _submitData()),
               //onChanged: ((value) => AmountInupt=value),
             ),
             Container(
@@ -59,12 +63,12 @@ class _NewtransactionState extends State<Newtransaction> {
                       style: TextButton.styleFrom(
                         foregroundColor: Theme.of(context).primaryColor, ),
                       child: Text('Choose date' ,style: TextStyle(fontWeight: FontWeight.bold),),
-                      onPressed: (() => null)),
+                      onPressed: _presentDatePicker,),
                 ],
               ),
             ),
             ElevatedButton(
-              onPressed: submitData,
+              onPressed: _submitData,
               style: TextButton.styleFrom(
                 foregroundColor: Theme.of(context).textTheme.button.color, // Text Color
               ),
