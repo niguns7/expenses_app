@@ -24,11 +24,10 @@ class _NewtransactionState extends State<Newtransaction> {
     widget.addTx(
       enteredData,
       enteredAmount,
-
-
     );
-          Navigator.of(context).pop(); //pop down for bottom box .... context is auto defined by class
-          //submitting the transactiion when button is presed
+    Navigator.of(context)
+        .pop(); //pop down for bottom box .... context is auto defined by class
+    //submitting the transactiion when button is presed
   }
 
   @override
@@ -51,10 +50,23 @@ class _NewtransactionState extends State<Newtransaction> {
               onSubmitted: ((value) => submitData()),
               //onChanged: ((value) => AmountInupt=value),
             ),
-            TextButton(
+            Container(
+              height: 70,
+              child: Row(
+                children: <Widget>[
+                  Text('No date choosen'),
+                  TextButton(
+                      style: TextButton.styleFrom(
+                        foregroundColor: Theme.of(context).primaryColor, ),
+                      child: Text('Choose date' ,style: TextStyle(fontWeight: FontWeight.bold),),
+                      onPressed: (() => null)),
+                ],
+              ),
+            ),
+            ElevatedButton(
               onPressed: submitData,
               style: TextButton.styleFrom(
-                foregroundColor: Colors.purple, // Text Color
+                foregroundColor: Theme.of(context).textTheme.button.color, // Text Color
               ),
               child: const Text(
                 'Add Transaction ',
