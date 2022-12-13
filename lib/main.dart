@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'QuickSand',
           textTheme: ThemeData.light().textTheme.copyWith(
             headline6: TextStyle(
-              fontFamily: 'OpenSans',
+              fontFamily: 'Quicksand',
               fontWeight: FontWeight.bold, 
               fontSize: 18)
           ),
