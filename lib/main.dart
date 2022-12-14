@@ -114,7 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Chart(_recentTransaction),
+            Container(
+              height: (MediaQuery.of(context).size.height) *0.4 - appBar.preferredSize.height,
+              child: Chart(_recentTransaction)),
             TransactionList(_userTransactions, _deletTransaction),
           ],
         ),
