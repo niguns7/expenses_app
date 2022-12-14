@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-              height: (MediaQuery.of(context).size.height) *0.4 - appBar.preferredSize.height-MediaQuery.of(context).padding.top,
+              height: (MediaQuery.of(context).size.height) *0.35 - appBar.preferredSize.height-MediaQuery.of(context).padding.top,
               child: Chart(_recentTransaction)),
             Container(
               height: (MediaQuery.of(context).size.height) *0.7 - appBar.preferredSize.height-MediaQuery.of(context).padding.top,
@@ -125,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
+        elevation: 7,
         child: Icon(Icons.add),
         onPressed: () => _StartNewtransaction(context),
       ),

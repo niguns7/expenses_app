@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class ChartBar extends StatelessWidget {
   final String lable;
@@ -9,17 +10,18 @@ class ChartBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return LayoutBuilder(builder: (ctx, Constraints) {
+      return  Column(
       children: <Widget>[
         Container(
-          height: 20,
+          height: Constraints.maxHeight * 0.15,
             child: FittedBox(
                 child: Text('\$${SpendingAmount.toStringAsFixed(0)}'))),
         SizedBox(
-          height: 9,
+          height: Constraints.maxHeight * 0.05,
         ),
         Container(
-          height: 90,
+          height: Constraints.maxHeight * 0.6 ,
           width: 10,
           child: Stack(children: <Widget>[
             Container(
@@ -41,9 +43,13 @@ class ChartBar extends StatelessWidget {
           ]),
         ),
         SizedBox(
-          height: 10,
+          height: Constraints.maxHeight * 0.05,
         ),
+        Container(
+          height: Constraints.maxHeight * 0.15,
+          child: Text(lable),),
       ],
     );
+    },); 
   }
 }
