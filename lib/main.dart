@@ -96,8 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    final appBar = AppBar(
         title: Text(
           'Expenses App',
           style: TextStyle(fontFamily: 'OpenSans'),
@@ -108,7 +107,9 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () => _StartNewtransaction(context),
           ),
         ],
-      ),
+      );
+    return Scaffold(
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
