@@ -9,9 +9,7 @@ class TransactionList extends StatelessWidget {
   TransactionList(this.transaction, this.deleteTx);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.6,
-      child: transaction.isEmpty
+    return transaction.isEmpty
           ? Column(
               children: <Widget>[
                 Container(
@@ -49,7 +47,6 @@ class TransactionList extends StatelessWidget {
                 );
               },
               itemCount: transaction.length,
-            ),
-    );
+            );
   }
 }
