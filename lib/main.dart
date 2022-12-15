@@ -6,9 +6,9 @@ import './widgets/new_transaction.dart';
 import './modal/transaction.dart';
 
 void main() {
-  //WidgetsFlutterBinding.ensureInitialized(); //forces our app to stay on potrait mode even the device rotates
-  //SystemChrome.setPreferredOrientations(
-  //[DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+WidgetsFlutterBinding.ensureInitialized(); //forces our app to stay on potrait mode
+SystemChrome.setPreferredOrientations(
+  [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MyApp());
 }
 
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       title: 'Expenses App',
       theme: ThemeData(
         primarySwatch: Colors.purple, //sets defult color
-        accentColor: Colors.amber,
         fontFamily: 'QuickSand',
         textTheme: ThemeData.light().textTheme.copyWith(
             headline6: TextStyle(
@@ -99,8 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  var _ShowChart = false;
-
   void _deletTransaction(String id) {
     setState(() {
       _userTransactions.removeWhere((tx) {
@@ -129,24 +126,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center ,
-              children: <Widget>[
-               
-                Text('Show chart'),
-                Switch(value: _ShowChart,onChanged: ((value){
-                  setState(() {
-                    _ShowChart = value;
-                  });
-                }),
-            )],
-            ),
-            _ShowChart ?
             Container(
                 height: (MediaQuery.of(context).size.height) * 0.35 -
                     appBar.preferredSize.height -
                     MediaQuery.of(context).padding.top,
-                child: Chart(_recentTransaction)) : Container(
+                child: Chart(_recentTransaction)),
+            Container(
                 height: (MediaQuery.of(context).size.height) * 0.7 -
                     appBar.preferredSize.height -
                     MediaQuery.of(context).padding.top,
@@ -156,7 +141,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        focusColor: Theme.of(context).accentColor,
         elevation: 7,
         child: Icon(Icons.add),
         onPressed: () => _StartNewtransaction(context),
