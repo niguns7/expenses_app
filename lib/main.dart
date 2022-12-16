@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Newtransaction(_addTransaction),
           behavior: HitTestBehavior.opaque,
         );
-      },
+      }, //detects the touching the acreen 
     );
   }
 
